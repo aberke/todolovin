@@ -1,0 +1,46 @@
+*{ margin: 0; padding: 0; text-align: center;
+	font-family: "source-sans-pro", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+	color: #074659;
+	list-style: none;
+}
+body{
+	padding: 20px;
+}
+ul a{
+	text-decoration: none;
+	font-weight: bold;
+}
+h1, h4{
+	color: purple
+}
+#nav-list{
+	display: inline-block;
+}
+.nav-item{
+	float: left;
+	margin: 10px;
+	padding: 5px;
+	border: 1px solid black;
+}
+.todo{
+	display: inline-block;
+	width: 80%;
+}
+.done-False{text-decoration: line-through;}
+.todo-asof{
+	font-size: 14px;
+	width: 200px;
+}
+.todo-description{
+	font-size: 1.4em;
+	width: 60%;
+}
+
+
+form ul{
+	display: inline-block;
+}
+form li{float: left;}
+
+
+
