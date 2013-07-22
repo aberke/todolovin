@@ -15,9 +15,9 @@ tags = db.Table('tags',
 class Todo(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	description = db.Column(db.String(200))
-	created_asof = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	created_asof = db.Column(db.DateTime, default=datetime.datetime.today)
 	done = db.Column(db.Boolean, default=False)
-	tags = db.relationship('Tag', secondary=tags, backref=db.backref('todos', lazy='dynamic'))
+	tags = db.relationship('Tag', secondary=tags, backref=db.backref('todos'))
 
 class Tag(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
