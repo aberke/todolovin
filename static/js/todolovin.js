@@ -37,12 +37,14 @@ function TodolovinController($scope, $route, $q, $http){
 
 
     $scope.create_todo_submit = function(){
-        console.log(this);
-        console.log(this.description);
-        http_post('/create-todo/', {'description': this.description}).then(function(data){
-            console.log(data);
-            $scope.todos = data;
-        });
+        if(this.description){
+            http_post('/create-todo/', {'description': this.description}).then(function(data){
+                $scope.todos = data;
+            }); 
+        }
+        else{
+            alert('Add a description for the task');
+        }
     }
     $scope.todo_add_tag = function(todo_id, tag_id){
         $http({
@@ -58,9 +60,7 @@ function TodolovinController($scope, $route, $q, $http){
     }
     $scope.todo_done_click = function(todo_id){
         document.getElementById('todo-'+todo_id).className="done-true";
-        http_post('/todo-done/',{'todo_id':todo_id}).then(function(data){
-            console.log(data);
-        })
+        http_post('/todo-done/',{'todo_id':todo_id}).then(function(data){})
 
     }
     $scope.get_todos_click = function(tag){
