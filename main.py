@@ -12,6 +12,16 @@ def create_todo():
 	db.session.commit()
 	return get_todos('all')
 
+@app.route('/delete-todo/', methods=['POST'])
+def delete_todo():
+	requestDict = json.loads(request.data)
+	todo_id = requestDict['todo_id']
+	tag_id = requestDict['tag_id']
+	todo = Todo.query.filter_by(id=todo_id).first()
+	db.session.delete(todo)
+	db.session.commit()
+	return get_todos(tag_id)
+
 
 @app.route('/todo-add-tag/', methods=['POST'])
 def todo_add_tag():

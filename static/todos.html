@@ -20,13 +20,13 @@
 				<li class="nav-item add-tag" ng-click="add_tag_click()">
 					<p>+ Add Tag</p>
 				</li>
-				{{ add_tag_click }}
 			</ul>
 		</div>
 		<hr />
 		<div id="todo-container">
 	    	<ul class="todo-list">
 	    		<li id="todo-{{ todo.id }}" class="done-{{todo.done}}" ng-repeat="todo in todos">
+	    			<button ng-click="todo_delete_click(todo.id)">delete</button>
 	    			<button ng-click="todo_done_click(todo.id)">done</button>
 	    			<span>{{ todo.created_asof }} : <em>{{ todo.description }}</em></span>
 	    			<span class="add-tags">

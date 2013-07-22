@@ -1,14 +1,5 @@
 var TodolovinApp = angular.module('TodolovinApp', []);
 
-TodolovinApp.config(function ($routeProvider, $locationProvider) {
-    $routeProvider
-        //.when('/login', {template: " ", controller: 'TodolovinController'})
-        .otherwise({ redirectTo: '' });
-
-        $locationProvider.html5Mode(true);
-});
-
-
 function TodolovinController($scope, $route, $q, $http){
     $scope.tags;
     $scope.todos;
@@ -37,34 +28,14 @@ function TodolovinController($scope, $route, $q, $http){
     }
 
     var init = function(){
-        get_tags().then(function(data){
+        http_get('/get-tags/').then(function(data){
             if(data!=500){$scope.tags = data;}
         });
         $scope.get_todos_click('all');
 
     }
 
-    var get_tags = function(){
-        var deferred = $q.defer();
-        $http({
-            method: 'GET',
-            url: '/get-tags/'
-        })
-        .success(function(returnedData){deferred.resolve(returnedData);})
-        .error(function(){deferred.resolve(500);});
-        return deferred.promise;
-    }
-    var todo_done = function(todo_id){
-         var deferred = $q.defer();
-        $http({
-            method: 'POST',
-            url: '/todo-done/',
-            data: {'todo_id':todo_id}
-        })
-        .success(function(returnedData){deferred.resolve(returnedData);})
-        .error(function(){deferred.resolve(500);});
-        return deferred.promise;       
-    }
+
     $scope.create_todo_submit = function(){
         console.log(this);
         console.log(this.description);
@@ -80,9 +51,14 @@ function TodolovinController($scope, $route, $q, $http){
             data: {'todo_id':todo_id, 'tag_id':tag_id}
         });        
     }
+    $scope.todo_delete_click = function(todo_id){
+        http_post('/delete-todo/', {'todo_id':todo_id,'tag_id':$scope.currentTag}).then(function(data){
+            $scope.todos = data;
+        })
+    }
     $scope.todo_done_click = function(todo_id){
         document.getElementById('todo-'+todo_id).className="done-true";
-        todo_done(todo_id).then(function(data){
+        http_post('/todo-done/',{'todo_id':todo_id}).then(function(data){
             console.log(data);
         })
 
@@ -99,8 +75,6 @@ function TodolovinController($scope, $route, $q, $http){
     }
 
     init();
-
-
 }
 
 

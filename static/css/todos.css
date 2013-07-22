@@ -5,13 +5,8 @@
 body{
 	padding: 20px;
 }
-ul a{
-	text-decoration: none;
-	font-weight: bold;
-}
-h1, h4{
-	color: purple
-}
+ul a{text-decoration: none;}
+h1, h4{color: purple}
 #nav-list{
 	display: inline-block;
 }
@@ -27,7 +22,7 @@ h1, h4{
 .nav-item:hover, .nav-item:active, .nav-item-selected:hover, .nav-item-selected:active{
 	background-color: #939393;
 }
-.nav-item-selected{border: 2px solid purple;}
+.nav-item-selected{border: 3px solid purple;}
 .todo-list li{
 	display: inline-block;
 	width: 80%;
@@ -45,6 +40,7 @@ h1, h4{
 .todo-list em{
 	color: white;
 	font-style: normal;
+	font-weight: bold;
 	font-size: 18px;
 }
 .done-true{
@@ -61,9 +57,7 @@ h1, h4{
 .todo-list span{color: white;}
 .done-False{text-decoration: line-through;}
 .add-tags{float: right;}
-.add-tags p{
-	with: 100px;
-}
+
 
 .todo-description{
 	font-size: 1.4em;
