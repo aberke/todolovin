@@ -31,4 +31,4 @@ Built With
 
 Run Locally
 ---------
-'''python main.py'''
+```python main.py```
