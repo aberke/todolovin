@@ -71,8 +71,6 @@ def get_todos(tag):
 @app.route('/todos/')
 @app.route('/')
 def index():
-	todos = Todo.query.all()
-	tags = Tag.query.all()
 	return send_file('static/todos.html')
 
 # serve up non-html static files
@@ -85,4 +83,4 @@ def _return_static():
 if __name__ == '__main__':
 	db.drop_all()
 	db.create_all()
-	app.run(debug=True)
+	app.run()
