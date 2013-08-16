@@ -1,5 +1,7 @@
 todolovin
 =========
+* first dabbling with many-to-many SQLalchemy relationships
+
 
 Goal
 -----
@@ -15,15 +17,18 @@ A todo is made up of
 
 Features
 ------
+* Add a todo
+* Mark a todo as done
+* Add one or more tags to a todo
+* check-off a todo
+* remove a todo
+* all done with API calls over http
 
-	* Add a todo
-	* Mark a todo as done
-	* Add one or more tags to a todo
-	* check-off a todo
-	* remove a todo
-
-Built
+Built With
 ---------
 * Python/Flask backend with SQLAlchemy database
 * Frontend uses Angularjs
-* Calls the API using http
+
+Run Locally
+---------
+'''python main.py'''
