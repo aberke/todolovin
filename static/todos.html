@@ -6,32 +6,33 @@
 		<meta name="author" content="Alexandra Berke">
 		<link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
 <!-- 		<link rel="shortcut icon" type="image/x-icon" href="http://alexandraberke.com/favicon.ico" /> -->
-		
+
 		<link rel="stylesheet" href="/static/css/todos.css" />
 		<script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>
         <script src="/static/js/todolovin.js"></script>
 	</head>
 	<body ng-controller="TodolovinController">
-		<h1 id="header">Todolovin</h1>
-		<div id="nav-list">
-			<ul>  
-				<li id="tag-all" class="nav-item" ng-click="get_todos_click('all')">
-					<a href="/"> All </a>
-				</li>   
-				<li id="tag-{{ tag }}" class="nav-item" ng-repeat="tag in tags" ng-click="get_todos_click(tag)">
-					<p>Tag {{ tag }}</p>
-				</li>
-				<li class="nav-item add-tag" ng-click="add_tag_click()">
-					<p>+ Add Tag</p>
-				</li>
-			</ul>
+		<div id="navbar-container">
+			<h1 id="header">Todolovin</h1>
+			<div id="nav-list">
+				<ul>  
+					<li id="tag-all" class="nav-item" ng-click="get_todos_click('all')">
+						<a href="/"> All </a>
+					</li>   
+					<li id="tag-{{ tag }}" class="nav-item" ng-repeat="tag in tags" ng-click="get_todos_click(tag)">
+						<p>Tag {{ tag }}</p>
+					</li>
+					<li class="nav-item add-tag" ng-click="add_tag_click()">
+						<p>+ Add Tag</p>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<hr />
 		<div id="todo-container">
 	    	<ul class="todo-list">
 	    		<li id="todo-{{ todo.id }}" class="done-{{todo.done}}" ng-repeat="todo in todos">
-	    			<button ng-click="todo_delete_click(todo.id)">delete</button>
-	    			<button ng-click="todo_done_click(todo.id)">done</button>
+	    			<button class="float-left" ng-click="todo_delete_click(todo.id)">delete</button>
+	    			<button class="float-left" ng-click="todo_done_click(todo.id)">done</button>
 	    			<span>{{ todo.created_asof }} : <em>{{ todo.description }}</em></span>
 	    			<span class="add-tags">
 	    				<p>Add Tags:</p>
@@ -39,8 +40,8 @@
 	    			</span>
 	    		</li>
 	    		<li ng-show="currentTag=='all'">
-	    			<form name="create_todo" ng-submit="create_todo_submit()">
-		    			<button type="submit">Create New</button>
+	    			<form class="create-todo-form" name="create_todo" ng-submit="create_todo_submit()">
+		    			<button class="float-left" type="submit">Create New</button>
 		    			<input ng-model="description" name="description" label="description" type="text" placeholder="description"></input>
 	    			</form>
 	    		</li>
